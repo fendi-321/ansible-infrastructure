@@ -4,8 +4,9 @@ resource "tls_private_key" "ssh_key" {
 }
 
 resource "local_file" "private_key_pem" {
-  content  = tls_private_key.ssh_key.private_key_pem
-  filename = "${path.module}/ansible-key.pem"
+  content         = tls_private_key.ssh_key.private_key_pem
+  filename        = "${path.module}/ansible-key.pem"
+  file_permission = "0400"
 }
 
 resource "aws_key_pair" "ansible" {
