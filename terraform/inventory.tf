@@ -3,5 +3,5 @@ resource "local_file" "ansible_inventory" {
     instances       = values(module.ec2_instance)
     ssh_private_key = local_file.private_key_pem.filename
   })
-  filename = "${path.module}/inventory.ini"
+  filename = "../ansible/inventory.ini"
 }
